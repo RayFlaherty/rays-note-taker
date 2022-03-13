@@ -3,6 +3,7 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+const api= "https://tranquil-peak-29954.herokuapp.com/api/notes"
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
@@ -26,7 +27,7 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('/api/notes', {
+  fetch(`${api}/api/notes`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ const getNotes = () =>
   });
 
 const saveNote = (note) =>
-  fetch('/api/notes', {
+  fetch(`${api}/api/notes`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,7 +44,7 @@ const saveNote = (note) =>
   });
 
 const deleteNote = (id) =>
-  fetch(`/api/notes/${id}`, {
+  fetch(`${api}/api/notes${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -104,6 +105,7 @@ const handleNoteView = (e) => {
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
+  console.log('connect');
   activeNote = {};
   renderActiveNote();
 };
@@ -120,7 +122,7 @@ const handleRenderSaveBtn = () => {
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
-    noteList.forEach((el) => (el.innerHTML = ''));
+    noteList.forEach((el) => (el.innerHTML = `${api}`));
   }
 
   let noteListItems = [];
