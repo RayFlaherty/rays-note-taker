@@ -3,9 +3,13 @@ const {notes} = require('../../db/notes.json');
 const {createNewNote, deleteNote} = require ('../../lib/notes');
 
 router.post('/notes', (req, res) =>{
-    req.body.id= notes.length.toString();
+    try {
+           req.body.id= notes.length.toString();
     let note = createNewNote(req.body, notes);
-    res.json(note);
+    res.status(200).json(note);
+    } catch (error) {
+        res.status(500).json(error)
+    }
 }),
 
 router.get('/notes', (req,res)=>{
@@ -13,8 +17,13 @@ router.get('/notes', (req,res)=>{
 }),
 
 router.delete('/notes/:id', (req, res) =>{
-    deleteNote( notes, req.params.id);
+   
+    try {
+         deleteNote( notes, req.params.id);
     res.json(notes);
+    } catch (error) {
+        res.json(500).json(error)     
+    }
 })
 
 module.exports = router;
