@@ -1,14 +1,27 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "To give the User a very clean and easy interface to create a list of notes that can be added and deleted due to the relevance of the note.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RayFlaherty/rays-note-taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RayFlaherty/rays-note-taker/issues"
+  },
+  "homepage": "https://github.com/RayFlaherty/rays-note-taker#readme"
 }
